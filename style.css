@@ -1,0 +1,786 @@
+
+:root {
+    
+    --color-primary: #2563EB;
+    --color-primary-dark: #1D4ED8;
+    --color-primary-light: #DBEAFE;
+    --color-sidebar: #111827;
+    --color-sidebar-hover: #1F2937;
+    --color-bg: #F3F4F6;
+    --color-card: #FFFFFF;
+    --color-success: #22C55E;
+    --color-success-light: #DCFCE7;
+    --color-warning: #F59E0B;
+    --color-warning-light: #FEF3C7;
+    --color-danger: #EF4444;
+    --color-danger-light: #FEE2E2;
+    --color-info: #0EA5E9;
+
+    /* Text */
+    --text-primary: #111827;
+    --text-secondary: #6B7280;
+    --text-muted: #9CA3AF;
+
+    /* Borders / Radius */
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --border-color: #E5E7EB;
+
+    /* Shadows */
+    --shadow-soft: 0 2px 8px rgba(17, 24, 39, 0.06);
+    --shadow-medium: 0 8px 24px rgba(17, 24, 39, 0.08);
+    --shadow-hover: 0 16px 32px rgba(17, 24, 39, 0.12);
+
+    /* Layout */
+    --sidebar-width: 260px;
+    --navbar-height: 72px;
+
+    /* Transitions */
+    --transition-base: all 0.25s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL RESETS / BASE STYLES
+   -------------------------------------------------------------------------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+}
+
+.tiny {
+    font-size: 0.75rem;
+}
+
+::selection {
+    background-color: var(--color-primary-light);
+}
+
+/* Focus visibility for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   3. TOP NAVBAR
+   -------------------------------------------------------------------------- */
+.top-navbar {
+    height: var(--navbar-height);
+    background-color: var(--color-card);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-soft);
+    z-index: 1030;
+    padding: 0 1.5rem;
+}
+
+.sidebar-toggle-btn {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    border: none;
+    background: transparent;
+    padding: 0.25rem 0.5rem;
+}
+
+.brand-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.brand-text {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+}
+
+/* Search Bar */
+.navbar-search {
+    position: relative;
+    width: 380px;
+    align-items: center;
+}
+
+.navbar-search .search-icon {
+    position: absolute;
+    left: 14px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.search-input {
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg);
+    border: 1px solid var(--border-color);
+    padding: 0.55rem 3rem 0.55rem 2.4rem;
+    font-size: 0.875rem;
+    transition: var(--transition-base);
+}
+
+.search-input:focus {
+    background-color: var(--color-card);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.search-kbd {
+    position: absolute;
+    right: 10px;
+    font-size: 0.7rem;
+    background-color: var(--color-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+/* Nav icon buttons (notifications, messages) */
+.nav-icon-btn {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    background-color: transparent;
+    border: none;
+    transition: var(--transition-base);
+}
+
+.nav-icon-btn:hover {
+    background-color: var(--color-bg);
+    color: var(--color-primary);
+}
+
+.badge-dot {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 0.6rem;
+    color: #fff;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-card);
+}
+
+/* User profile button */
+.user-profile-btn {
+    border: none;
+    background: transparent;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-md);
+    transition: var(--transition-base);
+}
+
+.user-profile-btn:hover {
+    background-color: var(--color-bg);
+}
+
+.user-avatar,
+.dropdown-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-primary-light);
+}
+
+.dropdown-avatar {
+    width: 34px;
+    height: 34px;
+}
+
+/* Dropdown menus */
+.custom-dropdown {
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-hover);
+    padding: 0.5rem;
+    min-width: 280px;
+    margin-top: 0.5rem;
+}
+
+.custom-dropdown .dropdown-header {
+    font-weight: 700;
+    color: var(--text-primary);
+    padding-left: 0.5rem;
+}
+
+.custom-dropdown .dropdown-item {
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.5rem;
+}
+
+.custom-dropdown .dropdown-item:hover {
+    background-color: var(--color-bg);
+}
+
+.notif-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   4. LAYOUT WRAPPER / SIDEBAR
+   -------------------------------------------------------------------------- */
+.app-wrapper {
+    display: flex;
+    min-height: calc(100vh - var(--navbar-height));
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--color-sidebar);
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    bottom: 0;
+    padding: 1.5rem 0;
+    overflow-y: auto;
+    z-index: 1020;
+}
+
+.sidebar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    color: #9CA3AF;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.8rem 1.5rem;
+    border-left: 3px solid transparent;
+    transition: var(--transition-base);
+    position: relative;
+}
+
+.sidebar-nav .nav-link i {
+    font-size: 1.05rem;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-nav .nav-link:hover {
+    background-color: var(--color-sidebar-hover);
+    color: #fff;
+}
+
+.sidebar-nav .nav-link.active {
+    background-color: rgba(37, 99, 235, 0.15);
+    color: #fff;
+    border-left-color: var(--color-primary);
+}
+
+.sidebar-badge {
+    margin-left: auto;
+    background-color: var(--color-primary);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+}
+
+.sidebar-divider {
+    border-color: rgba(255, 255, 255, 0.08);
+    margin: 0.5rem 1.5rem;
+}
+
+.logout-link {
+    color: #F87171 !important;
+    text-align: center;
+}
+
+.logout-link:hover {
+    background-color: rgba(239, 68, 68, 0.1) !important;
+    color: #F87171 !important;
+}
+
+/* Offcanvas sidebar (mobile) */
+.sidebar-offcanvas {
+    background-color: var(--color-sidebar);
+    color: #fff;
+    width: 280px;
+}
+
+.sidebar-offcanvas .offcanvas-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   5. MAIN CONTENT
+   -------------------------------------------------------------------------- */
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    min-width: 0;
+}
+
+.page-container {
+    padding: 2rem 1.75rem;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+}
+
+.page-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item a {
+    color: var(--text-secondary);
+}
+
+.breadcrumb-item.active {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   6. STATISTIC CARDS
+   -------------------------------------------------------------------------- */
+.stat-card {
+    border: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    background-color: var(--color-card);
+    transition: var(--transition-base);
+    overflow: hidden;
+    border-top: 4px solid transparent;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.stat-card.accent-primary { border-top-color: var(--color-primary); }
+.stat-card.accent-success { border-top-color: var(--color-success); }
+.stat-card.accent-warning { border-top-color: var(--color-warning); }
+.stat-card.accent-danger  { border-top-color: var(--color-danger); }
+
+.stat-label {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+}
+
+.stat-value {
+    font-size: 1.65rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.stat-growth {
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+}
+
+.stat-growth.positive {
+    color: var(--color-success);
+    background-color: var(--color-success-light);
+}
+
+.stat-growth.negative {
+    color: var(--color-danger);
+    background-color: var(--color-danger-light);
+}
+
+.stat-icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.accent-primary .stat-icon-wrap { background-color: var(--color-primary-light); color: var(--color-primary); }
+.accent-success .stat-icon-wrap { background-color: var(--color-success-light); color: var(--color-success); }
+.accent-warning .stat-icon-wrap { background-color: var(--color-warning-light); color: var(--color-warning); }
+.accent-danger .stat-icon-wrap  { background-color: var(--color-danger-light); color: var(--color-danger); }
+
+/* --------------------------------------------------------------------------
+   7. PANEL CARDS (Analytics, Table, Timeline, Quick Actions)
+   -------------------------------------------------------------------------- */
+.panel-card {
+    border: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    background-color: var(--color-card);
+    transition: var(--transition-base);
+}
+
+.panel-card:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.panel-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.panel-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.link-view-all {
+    color: var(--color-primary);
+}
+
+/* Range toggle buttons */
+.range-btn {
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    padding: 0.3rem 0.75rem;
+}
+
+.range-btn.active,
+.range-btn:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   8. ANALYTICS PLACEHOLDER VISUALS
+   -------------------------------------------------------------------------- */
+.chart-placeholder {
+    height: 220px;
+    gap: 0.75rem;
+    padding: 0 0.5rem;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.chart-bar-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    gap: 0.5rem;
+}
+
+.chart-bar {
+    width: 60%;
+    background: linear-gradient(180deg, var(--color-primary-light), var(--color-primary));
+    border-radius: 8px 8px 0 0;
+    transition: var(--transition-base);
+}
+
+.chart-bar-active {
+    background: linear-gradient(180deg, #93C5FD, var(--color-primary-dark));
+}
+
+.chart-bar-wrap:hover .chart-bar {
+    filter: brightness(1.1);
+    transform: scaleY(1.02);
+}
+
+.chart-bar-wrap span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Traffic Donut */
+.traffic-donut-wrap {
+    padding: 1rem 0;
+}
+
+.traffic-donut {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--color-primary) 0% 68%,
+        var(--color-success) 68% 86%,
+        var(--color-warning) 86% 95%,
+        var(--color-danger) 95% 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.traffic-donut-center {
+    width: 100px;
+    height: 100px;
+    background-color: var(--color-card);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.traffic-legend li {
+    display: flex;
+    align-items: center;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    padding: 0.35rem 0;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 0.6rem;
+}
+
+.dot-primary { background-color: var(--color-primary); }
+.dot-success { background-color: var(--color-success); }
+.dot-warning { background-color: var(--color-warning); }
+.dot-danger  { background-color: var(--color-danger); }
+
+/* --------------------------------------------------------------------------
+   9. RECENT ORDERS TABLE
+   -------------------------------------------------------------------------- */
+.custom-table thead {
+    background-color: var(--color-bg);
+}
+
+.custom-table thead th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    font-weight: 600;
+    border-bottom: none;
+    padding: 0.85rem 1rem;
+    white-space: nowrap;
+}
+
+.custom-table tbody td {
+    font-size: 0.875rem;
+    padding: 0.9rem 1rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.custom-table tbody tr {
+    transition: var(--transition-base);
+}
+
+.custom-table tbody tr:hover {
+    background-color: var(--color-bg);
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    display: inline-block;
+}
+
+.status-completed {
+    background-color: var(--color-success-light);
+    color: #15803D;
+}
+
+.status-pending {
+    background-color: var(--color-warning-light);
+    color: #B45309;
+}
+
+.status-cancelled {
+    background-color: var(--color-danger-light);
+    color: #B91C1C;
+}
+
+/* --------------------------------------------------------------------------
+   10. TIMELINE / RECENT ACTIVITY
+   -------------------------------------------------------------------------- */
+.timeline {
+    position: relative;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 0.9rem;
+    position: relative;
+    padding-bottom: 1.4rem;
+}
+
+.timeline-item:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 38px;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--border-color);
+}
+
+.timeline-icon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    z-index: 1;
+}
+
+.timeline-content {
+    padding-top: 0.15rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. QUICK ACTIONS
+   -------------------------------------------------------------------------- */
+.quick-action-btn {
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.7rem 1.3rem;
+    border: none;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-soft);
+}
+
+.quick-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+    color: #fff;
+}
+
+.qa-primary { background-color: var(--color-primary); }
+.qa-primary:hover { background-color: var(--color-primary-dark); }
+
+.qa-success { background-color: var(--color-success); }
+.qa-success:hover { background-color: #16A34A; }
+
+.qa-warning { background-color: var(--color-warning); }
+.qa-warning:hover { background-color: #D97706; }
+
+.qa-dark { background-color: var(--color-sidebar); }
+.qa-dark:hover { background-color: #030712; }
+
+/* --------------------------------------------------------------------------
+   12. FOOTER
+   -------------------------------------------------------------------------- */
+.dashboard-footer {
+    padding: 1.5rem 0 0.5rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   13. RESPONSIVE BEHAVIOUR
+   -------------------------------------------------------------------------- */
+
+/* Tablet and below: sidebar hidden, main content full width */
+@media (max-width: 991.98px) {
+    .main-content {
+        margin-left: 0;
+    }
+
+    .page-container {
+        padding: 1.5rem 1rem;
+    }
+}
+
+/* Tablet: two cards per row is handled via Bootstrap col-sm-6 already */
+@media (max-width: 767.98px) {
+    .page-title {
+        font-size: 1.25rem;
+    }
+
+    .chart-placeholder {
+        height: 180px;
+    }
+
+    .quick-action-btn {
+        flex: 1 1 45%;
+        justify-content: center;
+    }
+}
+
+/* Small mobile: one card per row, tighter spacing */
+@media (max-width: 575.98px) {
+    .page-container {
+        padding: 1.25rem 0.75rem;
+    }
+
+    .stat-value {
+        font-size: 1.4rem;
+    }
+
+    .quick-action-btn {
+        flex: 1 1 100%;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   14. SCROLLBAR STYLING (Webkit)
+   -------------------------------------------------------------------------- */
+.sidebar::-webkit-scrollbar,
+.table-responsive::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: #D1D5DB;
+    border-radius: 10px;
+}
